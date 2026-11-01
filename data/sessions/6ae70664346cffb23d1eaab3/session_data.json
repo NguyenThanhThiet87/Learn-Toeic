@@ -1243,5 +1243,11 @@
       "audio_transcript": "<p>When are you going to choose a new project manager?</p><p>(A) The projector's not working correctly.</p><p>(B) Next to the front entrance.</p><p><strong>(C) I'm really busy this week.</strong></p><p><br></p>",
       "info_vi": "<p>Khi nào bạn định chọn quản lý dự án mới?</p><p>(A) Máy chiếu không hoạt động chính xác.</p><p>(B) Cạnh lối vào phía trước.</p><p><strong>(C) Tuần này tôi thực sự bận.</strong></p>"
     }
-  ]
+  ],
+  "progress": {
+    "completed_questions": [],
+    "completed_items": {},
+    "last_question_idx": 0,
+    "updated_at": 1793533425786
+  }
 }

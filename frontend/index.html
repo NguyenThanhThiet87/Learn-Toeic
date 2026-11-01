@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOEIC Dictation Practice — Luyện Nghe Chép Chính Tả</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-area">
+      <div class="logo-badge">TOEIC 2026</div>
+      <div class="app-title">Luyện Nghe Chép Chính Tả (Part 1 & 2)</div>
+    </div>
+    <div class="header-controls">
+      <select id="session-select" class="session-select" title="Chọn đề thi đã cào">
+        <option value="">Đang nạp danh sách đề...</option>
+      </select>
+      <button id="btn-open-crawl" class="btn-primary">
+        <span>+ Cào Đề Mới</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Question Navigation Bar -->
+  <div class="nav-container">
+    <div class="nav-part-label">Part 1 (1–6):</div>
+    <div class="nav-q-list" id="nav-p1"></div>
+    <div style="width: 1px; height: 24px; background-color: var(--border-color); margin: 0 4px;"></div>
+    <div class="nav-part-label">Part 2 (7–31):</div>
+    <div class="nav-q-list" id="nav-p2"></div>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <div class="workspace-grid" id="workspace-grid">
+      <!-- Left Column: Image Card (Part 1 only) -->
+      <div class="image-card" id="image-card">
+        <img id="q-image" src="" alt="TOEIC Part 1 Photo">
+      </div>
+
+      <!-- Right Column: Audio & Dictation Form -->
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <!-- Audio Card -->
+        <div class="audio-card">
+          <div class="audio-header">
+            <div class="question-heading">
+              <span id="q-title">Đang tải...</span>
+              <span class="badge-part" id="q-part-badge">Part 1</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 13px; color: var(--text-muted);">Tốc độ:</span>
+              <select id="speed-select" class="session-select" style="padding: 4px 8px; font-size: 13px;">
+                <option value="0.75">0.75x</option>
+                <option value="0.9">0.9x</option>
+                <option value="1.0" selected>1.0x (Chuẩn)</option>
+                <option value="1.25">1.25x</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="audio-controls-row">
+            <button id="btn-play" class="btn-ctrl btn-play">▶ Phát</button>
+            <button id="btn-rewind" class="btn-ctrl" title="Lùi lại 2 giây (Ctrl+Left)">↺ Lùi 2s</button>
+            <button id="btn-forward" class="btn-ctrl" title="Tiến 2 giây (Ctrl+Right)">↻ Tiến 2s</button>
+            <button id="btn-replay" class="btn-ctrl" title="Nghe lại từ đầu (Ctrl+R)">⏮ Nghe lại đầu</button>
+            
+            <div class="audio-seeker">
+              <input type="range" id="audio-seeker" min="0" max="100" value="0">
+              <span class="time-display" id="time-display">0:00 / 0:00</span>
+            </div>
+          </div>
+
+          <!-- Shortcuts Legend -->
+          <div class="shortcuts-bar">
+            <div class="shortcut-pill"><kbd>Ctrl+Space</kbd> Dừng/Phát</div>
+            <div class="shortcut-pill"><kbd>Ctrl+←</kbd> Lùi 2s</div>
+            <div class="shortcut-pill"><kbd>Ctrl+R</kbd> Nghe lại đầu</div>
+            <div class="shortcut-pill"><kbd>Ctrl+H</kbd> Gợi ý 1 chữ</div>
+            <div class="shortcut-pill"><kbd>Ctrl+Enter</kbd> Câu tiếp theo</div>
+            <div class="shortcut-pill" style="color: var(--accent-cyan);"><kbd>Tô đen chữ</kbd> Xem dịch Tiếng Việt</div>
+          </div>
+        </div>
+
+        <!-- Dictation Items Container -->
+        <div class="dictation-container" id="dictation-container">
+          <!-- Rendered dynamically by dictation.js -->
+        </div>
+
+        <!-- Navigation Footer -->
+        <div class="dictation-footer">
+          <button id="btn-prev-q" class="btn-nav">← Câu Trước</button>
+          <button id="btn-next-q" class="btn-nav">Câu Tiếp Theo (Ctrl+Enter) →</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Translation Floating Tooltip (Bôi đen dịch nghĩa) -->
+  <div id="translation-tooltip">
+    <div class="tooltip-header">Bản dịch Tiếng Việt:</div>
+    <div class="tooltip-body"></div>
+  </div>
+
+  <!-- Modal: Cào đề mới -->
+  <div class="modal-overlay" id="modal-crawl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Cào Đề Thi Parroto Mới</div>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+
+      <form id="crawl-form" class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="crawl-url">Đường link bài thi Parroto:</label>
+          <input 
+            type="text" 
+            id="crawl-url" 
+            class="form-input" 
+            placeholder="https://parroto.app/vi/exams/toeic/session/6ae70664346cffb23d1eaab3" 
+            required
+          >
+          <span style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
+            Tool tự động trích xuất token đăng nhập trong Google Chrome của bạn.
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="crawl-token">Token đăng nhập dự phòng (Không bắt buộc):</label>
+          <input 
+            type="text" 
+            id="crawl-token" 
+            class="form-input" 
+            placeholder="Bỏ trống để tự động lấy từ Chrome..."
+          >
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-container" id="crawl-progress" style="display: none;">
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+          </div>
+          <div class="progress-text" id="progress-text">Đang chuẩn bị...</div>
+        </div>
+
+        <button type="submit" id="btn-start-crawl" class="btn-primary" style="justify-content: center; padding: 12px; margin-top: 6px;">
+          Bắt Đầu Cào Đề & Tải Audio
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/js/audio_player.js"></script>
+  <script src="/static/js/translator.js"></script>
+  <script src="/static/js/dictation.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

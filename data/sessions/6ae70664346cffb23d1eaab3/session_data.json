@@ -1,0 +1,1247 @@
+{
+  "session_id": "6ae70664346cffb23d1eaab3",
+  "title": "TOEIC Exam",
+  "total_questions": 31,
+  "questions": [
+    {
+      "question_number": 1,
+      "part": 1,
+      "title": "Part 1 - Câu 1",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q1.mp3",
+      "image_file": "/media/6ae70664346cffb23d1eaab3/images/q1.webp",
+      "items": [
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "The woman is carrying a tray of food.",
+          "vi": "Người phụ nữ đang bưng một khay thức ăn.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "The woman is wearing a jacket.",
+          "vi": "Người phụ nữ đang mặc áo khoác.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "The woman is tying up her hair.",
+          "vi": "Người phụ nữ đang buộc tóc.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "label": "(D)",
+          "en": "The woman is removing her hat.",
+          "vi": "Người phụ nữ đang cởi mũ của mình.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": null,
+      "audio_transcript": "<p>(A) The woman is carrying a tray of food. </p><p>(B) The woman is wearing a jacket. </p><p>(C) The woman is tying up her hair. </p><p>(D) The woman is removing her hat.</p>",
+      "info_vi": "<p>(A) Người phụ nữ đang bưng một khay thức ăn.&nbsp;</p><p>(B) Người phụ nữ đang mặc áo khoác.&nbsp;</p><p>(C) Người phụ nữ đang buộc tóc.&nbsp;</p><p>(D) Người phụ nữ đang cởi mũ của mình.</p>"
+    },
+    {
+      "question_number": 2,
+      "part": 1,
+      "title": "Part 1 - Câu 2",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q2.mp3",
+      "image_file": "/media/6ae70664346cffb23d1eaab3/images/q2.webp",
+      "items": [
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "Some people are standing next to a filing cabinet.",
+          "vi": "Một số người đang đứng cạnh tủ hồ sơ.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "Some people are searching through a desk.",
+          "vi": "Một số người đang tìm kiếm trên bàn.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Some people are watching a presentation.",
+          "vi": "Một số người đang xem bài thuyết trình.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "label": "(D)",
+          "en": "Some people are looking at a book.",
+          "vi": "Một số người đang xem một cuốn sách.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": null,
+      "audio_transcript": "<p>(A) Some people are standing next to a filing cabinet. </p><p>(B) Some people are searching through a desk. </p><p>(C) Some people are watching a presentation. </p><p>(D) Some people are looking at a book.</p>",
+      "info_vi": "<p>(A) Một số người đang đứng cạnh tủ hồ sơ.&nbsp;</p><p>(B) Một số người đang tìm kiếm trên bàn.&nbsp;</p><p>(C) Một số người đang xem bài thuyết trình.&nbsp;</p><p>(D) Một số người đang xem một cuốn sách.</p>"
+    },
+    {
+      "question_number": 3,
+      "part": 1,
+      "title": "Part 1 - Câu 3",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q3.mp3",
+      "image_file": "/media/6ae70664346cffb23d1eaab3/images/q3.webp",
+      "items": [
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "A woman is holding a phone up to her ear.",
+          "vi": "Một người phụ nữ đang áp điện thoại lên tai.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "A woman is pouring a beverage into a glass.",
+          "vi": "Một người phụ nữ đang rót đồ uống vào ly.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Some light fixtures are hanging from the ceiling.",
+          "vi": "Một số thiết bị chiếu sáng được treo trên trần nhà.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "label": "(D)",
+          "en": "Some tiles are being installed in a hallway.",
+          "vi": "Một số viên gạch đang được lắp đặt ở hành lang.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": null,
+      "audio_transcript": "<p>(A) A woman is holding a phone up to her ear. </p><p>(B) A woman is pouring a beverage into a glass. </p><p>(C) Some light fixtures are hanging from the ceiling. </p><p>(D) Some tiles are being installed in a hallway.</p>",
+      "info_vi": "<p>(A) Một người phụ nữ đang áp điện thoại lên tai.&nbsp;</p><p>(B) Một người phụ nữ đang rót đồ uống vào ly.&nbsp;</p><p>(C) Một số thiết bị chiếu sáng được treo trên trần nhà.&nbsp;</p><p>(D) Một số viên gạch đang được lắp đặt ở hành lang.</p>"
+    },
+    {
+      "question_number": 4,
+      "part": 1,
+      "title": "Part 1 - Câu 4",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q4.mp3",
+      "image_file": "/media/6ae70664346cffb23d1eaab3/images/q4.webp",
+      "items": [
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "A wooden crate is filled with vegetables.",
+          "vi": "Một thùng gỗ chứa đầy rau.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "One of the men is putting vegetables into a shopping bag.",
+          "vi": "Một trong những người đàn ông đang bỏ rau vào túi mua hàng.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "A backpack has been set on the ground.",
+          "vi": "Một chiếc ba lô đã được đặt trên mặt đất.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "label": "(D)",
+          "en": "One of the men is reaching into a bucket.",
+          "vi": "Một trong những người đàn ông đang với tay vào một cái xô.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "A",
+      "audio_transcript": "<p><strong>(A) A wooden crate is filled with vegetables. </strong></p><p>(B) One of the men is putting vegetables into a shopping bag.</p><p>(C) A backpack has been set on the ground.</p><p>(D) One of the men is reaching into a bucket.</p>",
+      "info_vi": "<p><strong>(A) Một thùng gỗ chứa đầy rau.&nbsp;</strong></p><p>(B) Một trong những người đàn ông đang bỏ rau vào túi mua hàng.&nbsp;</p><p>(C) Một chiếc ba lô đã được đặt trên mặt đất.&nbsp;</p><p>(D) Một trong những người đàn ông đang với tay vào một cái xô.</p>"
+    },
+    {
+      "question_number": 5,
+      "part": 1,
+      "title": "Part 1 - Câu 5",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q5.mp3",
+      "image_file": "/media/6ae70664346cffb23d1eaab3/images/q5.webp",
+      "items": [
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "Painting supplies have been laid out on the floor.",
+          "vi": "Dụng cụ vẽ tranh đã được bày ra trên sàn nhà.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "He's laying a brush down on a windowsill.",
+          "vi": "Anh ấy đang đặt một cây cọ xuống bệ cửa sổ.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "He's lifting a can of paint by its handle.",
+          "vi": "Anh ấy đang nhấc một lon sơn bằng tay cầm của nó.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "label": "(D)",
+          "en": "Cans of paint have been placed on a step stool.",
+          "vi": "Các lon sơn đã được đặt trên một chiếc ghế đẩu.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "A",
+      "audio_transcript": "<p><strong>(A) Painting supplies have been laid out on the floor. </strong></p><p>(B) He's laying a brush down on a windowsill.</p><p>(C) He's lifting a can of paint by its handle.</p><p>(D) Cans of paint have been placed on a step stool.</p>",
+      "info_vi": "<p><strong>(A) Dụng cụ vẽ tranh đã được bày ra trên sàn nhà</strong>.</p><p>(B) Anh ấy đang đặt một cây cọ xuống bệ cửa sổ.</p><p>(C) Anh ấy đang nhấc một lon sơn bằng tay cầm của nó.</p><p>(D) Các lon sơn đã được đặt trên một chiếc ghế đẩu.</p>"
+    },
+    {
+      "question_number": 6,
+      "part": 1,
+      "title": "Part 1 - Câu 6",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q6.mp3",
+      "image_file": "/media/6ae70664346cffb23d1eaab3/images/q6.webp",
+      "items": [
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "A path is covered with fallen branches.",
+          "vi": "Một con đường bị phủ đầy cành cây gãy.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "A tree is lying across a grassy area.",
+          "vi": "Một cây đổ nằm chắn ngang khu vực cỏ.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Some water has pooled on a path.",
+          "vi": "Một ít nước đọng trên đường đi.",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "label": "(D)",
+          "en": "Some cyclists are riding through a field.",
+          "vi": "Một số người đi xe đạp đang đạp xe qua một cánh đồng.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "C",
+      "audio_transcript": "<p>(A) A path is covered with fallen branches.</p><p>(B) A tree is lying across a grassy area.</p><p><strong>(C) Some water has pooled on a path. </strong></p><p>(D) Some cyclists are riding through a field.</p>",
+      "info_vi": "<p>(A) Một con đường bị phủ đầy cành cây gãy.</p><p>(B) Một cây đổ nằm chắn ngang khu vực cỏ.</p><p><strong>(C) Một ít nước đọng trên đường đi.</strong></p><p>(D) Một số người đi xe đạp đang đạp xe qua một cánh đồng.</p>"
+    },
+    {
+      "question_number": 7,
+      "part": 2,
+      "title": "Part 2 - Câu 7",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q7.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Where is the conference being held?",
+          "vi": "Hội nghị được tổ chức ở đâu?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "A three-day vacation.",
+          "vi": "Một kỳ nghỉ ba ngày.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "At the Riverview Hotel.",
+          "vi": "Tại khách sạn Riverview.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "In the supply cabinet.",
+          "vi": "Trong tủ cung cấp.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "B",
+      "audio_transcript": "<p>Where is the conference being held? </p><p>(A) A three-day vacation. </p><p><strong>(B) At the Riverview Hotel. </strong></p><p>(C) In the supply cabinet.</p>",
+      "info_vi": "<p>Hội nghị được tổ chức ở đâu? </p><p>(A) Một kỳ nghỉ ba ngày. </p><p><strong>(B) Tại khách sạn Riverview.</strong> </p><p>(C) Trong tủ cung cấp.</p>"
+    },
+    {
+      "question_number": 8,
+      "part": 2,
+      "title": "Part 2 - Câu 8",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q8.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "When does the warehouse manager arrive?",
+          "vi": "Khi nào người quản lý kho đến?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "Sure, no problem.",
+          "vi": "Chắc chắn rồi, không vấn đề gì.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "About twelve shipping boxes.",
+          "vi": "Khoảng mười hai hộp vận chuyển.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Not until this afternoon.",
+          "vi": "Không phải cho đến chiều nay.",
+          "is_correct": true
+        }
+      ],
+      "correct_choice": "C",
+      "audio_transcript": "<p>When does the warehouse manager arrive? </p><p>(A) Sure, no problem. </p><p>(B) About twelve shipping boxes. </p><p><strong>(C) Not until this afternoon.</strong></p>",
+      "info_vi": "<p>Khi nào người quản lý kho đến? </p><p>(A) Chắc chắn, không vấn đề gì. </p><p>(B) Khoảng 12 hộp vận chuyển. </p><p><strong>(C) Không cho đến chiều nay.</strong></p>"
+    },
+    {
+      "question_number": 9,
+      "part": 2,
+      "title": "Part 2 - Câu 9",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q9.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "There's a nice park nearby, right?",
+          "vi": "Gần đây có một công viên rất đẹp phải không?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "Did you order paper for the copier?",
+          "vi": "Bạn đã đặt giấy cho máy photocopy chưa?",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "Yes-it's next to Greendale Lake.",
+          "vi": "Vâng - nó nằm cạnh Hồ Greendale.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "They're in the parking garage.",
+          "vi": "Họ đang ở trong gara đậu xe.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "B",
+      "audio_transcript": "<p>There's a nice park nearby, right? </p><p>(A) Did you order paper for the copier? </p><p><strong>(B) Yes-it's next to Greendale Lake. </strong></p><p>(C) They're in the parking garage.</p>",
+      "info_vi": "<p>Gần đây có một công viên rất đẹp phải không? </p><p>(A) Bạn đã đặt hàng giấy cho máy photocopy phải không? </p><p><strong>(B) Vâng - nó nằm cạnh Hồ Greendale. </strong></p><p>(C) Họ đang ở trong gara đậu xe.</p>"
+    },
+    {
+      "question_number": 10,
+      "part": 2,
+      "title": "Part 2 - Câu 10",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q10.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Who sent the meeting minutes to the accounting department?",
+          "vi": "Ai đã gửi biên bản họp cho bộ phận kế toán?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "Our office assistant.",
+          "vi": "Trợ lý văn phòng của chúng tôi.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "They have a savings account.",
+          "vi": "Họ có một tài khoản tiết kiệm.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Cash and credit cards.",
+          "vi": "Tiền mặt và thẻ tín dụng.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "A",
+      "audio_transcript": "<p>Who sent the meeting minutes to the accounting department? </p><p><strong>(A) Our office assistant. </strong></p><p>(B) They have a savings account. </p><p>(C) Cash and credit cards.</p>",
+      "info_vi": "<p>Ai đã gửi biên bản họp cho bộ phận kế toán? </p><p><strong>(A) Trợ lý văn phòng của chúng tôi. </strong></p><p>(B) Họ có một tài khoản tiết kiệm. </p><p>(C) Tiền mặt và thẻ tín dụng.</p>"
+    },
+    {
+      "question_number": 11,
+      "part": 2,
+      "title": "Part 2 - Câu 11",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q11.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "I'd like to know what you think of our new finance analyst.",
+          "vi": "Tôi muốn biết bạn nghĩ gì về nhà phân tích tài chính mới của chúng tôi.",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "I've prepared the decorations for tomorrow.",
+          "vi": "Tôi đã chuẩn bị đồ trang trí cho ngày mai.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "He seems very competent.",
+          "vi": "Anh ấy có vẻ rất có năng lực.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "It's finally stopped raining.",
+          "vi": "Cuối cùng trời cũng tạnh mưa.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "B",
+      "audio_transcript": "<p>I'd like to know what you think of our new finance analyst. </p><p>(A) I've prepared the decorations for tomorrow. </p><p><strong>(B) He seems very competent.</strong> </p><p>(C) It's finally stopped raining.</p>",
+      "info_vi": "<p>Tôi muốn biết bạn nghĩ gì về nhà phân tích tài chính mới của chúng tôi. </p><p>(A) Tôi đã chuẩn bị đồ trang trí cho ngày mai. </p><p><strong>(B) Anh ấy có vẻ rất có năng lực.</strong> </p><p>(C) Cuối cùng trời cũng tạnh mưa.</p>"
+    },
+    {
+      "question_number": 12,
+      "part": 2,
+      "title": "Part 2 - Câu 12",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q12.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Let's go on the company retreat. (A) Oh, did he? (B) Yes, that's a good idea. (C) He tried to solve that problem.",
+          "vi": "Hãy đi nghỉ dưỡng cùng công ty. (A) Ồ, phải không? (B) Vâng, đó là một ý tưởng hay. (C) Anh ấy đã cố gắng giải quyết vấn đề đó.",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "Oh, did he?",
+          "vi": "Ồ, phải không?",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "Yes, that's a good idea.",
+          "vi": "Vâng, đó là một ý tưởng hay.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "He tried to solve that problem.",
+          "vi": "Anh ấy đã cố gắng giải quyết vấn đề đó.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "B",
+      "audio_transcript": "<p>Let's go on the company retreat. (A) Oh, did he? <strong>(B) Yes, that's a good idea.</strong> (C) He tried to solve that problem.</p>",
+      "info_vi": "<p>Hãy đi nghỉ dưỡng cùng công ty. (A) Ồ, phải không? <strong>(B) Vâng, đó là một ý tưởng hay.</strong> (C) Anh ấy đã cố gắng giải quyết vấn đề đó.</p>"
+    },
+    {
+      "question_number": 13,
+      "part": 2,
+      "title": "Part 2 - Câu 13",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q13.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "What time can I pick up my glasses?",
+          "vi": "Tôi có thể nhận kính vào lúc mấy giờ?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "No, it's not very heavy.",
+          "vi": "Không, nó không nặng lắm.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "About twenty meters.",
+          "vi": "Khoảng hai mươi mét.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "We close at six o'clock.",
+          "vi": "Chúng tôi đóng cửa lúc sáu giờ.",
+          "is_correct": true
+        }
+      ],
+      "correct_choice": "C",
+      "audio_transcript": "<p>What time can I pick up my glasses? </p><p>(A) No, it's not very heavy. </p><p>(B) About twenty meters.</p><p><strong>(C) We close at six o'clock.</strong></p>",
+      "info_vi": "<p>Tôi có thể nhận kính vào lúc mấy giờ? </p><p>(A) Không, nó không nặng lắm. </p><p>(B) Khoảng hai mươi mét.</p><p><strong>(C) Chúng tôi đóng cửa lúc sáu giờ.</strong></p>"
+    },
+    {
+      "question_number": 14,
+      "part": 2,
+      "title": "Part 2 - Câu 14",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q14.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "The sales team knows how to use the tracking software, don't they?",
+          "vi": "Đội ngũ bán hàng biết cách sử dụng phần mềm theo dõi phải không?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "It's on the lower shelf.",
+          "vi": "Nó ở kệ dưới.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "A twelve-thirty departure.",
+          "vi": "Chuyến khởi hành lúc mười hai giờ ba mươi.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "I haven't seen them using it yet.",
+          "vi": "Tôi chưa thấy họ sử dụng nó.",
+          "is_correct": true
+        }
+      ],
+      "correct_choice": "C",
+      "audio_transcript": "<p>The sales team knows how to use the tracking software, don't they? </p><p>(A) It's on the lower shelf. </p><p>(B) A twelve-thirty departure. </p><p><strong>(C) I haven't seen them using it yet.</strong></p>",
+      "info_vi": "<p>Đội ngũ bán hàng biết cách sử dụng phần mềm theo dõi phải không? </p><p>(A) Nó ở kệ dưới. </p><p>(B) Chuyến khởi hành lúc 12 giờ 30. </p><p><strong>(C) Tôi chưa thấy họ sử dụng nó.</strong></p>"
+    },
+    {
+      "question_number": 15,
+      "part": 2,
+      "title": "Part 2 - Câu 15",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q15.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Are you going to the hardware store on Mill Street?",
+          "vi": "Bạn đang đi đến cửa hàng kim khí ở phố Mill phải không?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "That store hasn't opened yet.",
+          "vi": "Cửa hàng đó vẫn chưa mở cửa.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "The blue package you sent me.",
+          "vi": "Gói hàng màu xanh mà bạn đã gửi cho tôi.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Some nails and a hammer.",
+          "vi": "Một vài chiếc đinh và một cái búa.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "A",
+      "audio_transcript": "<p>Are you going to the hardware store on Mill Street?</p><p><strong>(A) That store hasn't opened yet.</strong></p><p>(B) The blue package you sent me.</p><p>(C) Some nails and a hammer.</p>",
+      "info_vi": "<p>Bạn đang đi đến cửa hàng kim khí ở phố Mill phải không?</p><p><strong>(A) Cửa hàng đó vẫn chưa mở cửa.</strong></p><p>(B) Gói hàng màu xanh mà bạn đã gửi cho tôi.</p><p>(C) Một vài chiếc đinh và một cái búa.</p>"
+    },
+    {
+      "question_number": 16,
+      "part": 2,
+      "title": "Part 2 - Câu 16",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q16.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Would you be able to write the introduction for the workshop?",
+          "vi": "Bạn có thể viết lời giới thiệu cho buổi hội thảo được không?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "That was a great book.",
+          "vi": "Đó là một cuốn sách tuyệt vời.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "OK, I'd be happy to.",
+          "vi": "Được chứ, tôi rất sẵn lòng.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "He doesn't have any more.",
+          "vi": "Anh ấy không còn cái nào nữa.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "B",
+      "audio_transcript": "<p>Would you be able to write the introduction for the workshop?</p><p>(A) That was a great book.</p><p><strong>(B) OK, I'd be happy to.</strong></p><p>(C) He doesn't have any more.</p>",
+      "info_vi": "<p>Bạn có thể viết lời giới thiệu cho buổi hội thảo được không?</p><p>(A) Đó là một cuốn sách tuyệt vời.</p><p><strong>(B) Được chứ, tôi rất sẵn lòng.</strong></p><p>(C) Anh ấy không còn cái nào nữa.</p>"
+    },
+    {
+      "question_number": 17,
+      "part": 2,
+      "title": "Part 2 - Câu 17",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q17.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "I picked up some flowers for Tunji's retirement party.",
+          "vi": "Tôi đã mua một ít hoa cho bữa tiệc nghỉ hưu của Tunji.",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "No, pick any day.",
+          "vi": "Không, hãy chọn bất kỳ ngày nào.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "That was thoughtful.",
+          "vi": "Thật là chu đáo.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "A delivery driver.",
+          "vi": "Một nhân viên giao hàng.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "B",
+      "audio_transcript": "<p>I picked up some flowers for Tunji's retirement party.</p><p>(A) No, pick any day.</p><p><strong>(B) That was thoughtful.</strong></p><p>(C) A delivery driver.</p>",
+      "info_vi": "<p>Tôi đã mua một ít hoa cho bữa tiệc nghỉ hưu của Tunji.</p><p>(A) Không, hãy chọn bất kỳ ngày nào.</p><p><strong>(B) Thật là chu đáo.</strong></p><p>(C) Một nhân viên giao hàng.</p>"
+    },
+    {
+      "question_number": 18,
+      "part": 2,
+      "title": "Part 2 - Câu 18",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q18.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Which meeting room did you tell the interns to go to?",
+          "vi": "Bạn đã bảo các thực tập sinh đi đến phòng họp nào?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "The Jefferson Room.",
+          "vi": "Phòng Jefferson.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "The meeting was fun, thanks.",
+          "vi": "Cuộc họp rất vui, cảm ơn.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Yes, it's a conference call.",
+          "vi": "Vâng, đó là một cuộc gọi hội nghị.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "A",
+      "audio_transcript": "<p>Which meeting room did you tell the interns to go to?</p><p><strong>(A) The Jefferson Room.</strong></p><p>(B) The meeting was fun, thanks.</p><p>(C) Yes, it's a conference call.</p>",
+      "info_vi": "<p>Bạn đã bảo các thực tập sinh đi đến phòng họp nào?</p><p><strong>(A) Phòng Jefferson.</strong></p><p>(B) Cuộc họp rất vui, cảm ơn.</p><p>(C) Vâng, đó là một cuộc gọi hội nghị.</p>"
+    },
+    {
+      "question_number": 19,
+      "part": 2,
+      "title": "Part 2 - Câu 19",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q19.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Is your dental appointment next Tuesday?",
+          "vi": "Lịch hẹn nha khoa của bạn là vào thứ Ba tới phải không?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "You can borrow mine.",
+          "vi": "Bạn có thể mượn của tôi.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "I'll have to check my calendar.",
+          "vi": "Tôi sẽ phải kiểm tra lịch của mình.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Yes, it was a good meeting.",
+          "vi": "Vâng, đó là một cuộc họp tốt.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "B",
+      "audio_transcript": "<p>Is your dental appointment next Tuesday?</p><p>(A) You can borrow mine.</p><p><strong>(B) I'll have to check my calendar.</strong></p><p>(C) Yes, it was a good meeting.</p>",
+      "info_vi": "<p>Lịch hẹn nha khoa của bạn là vào thứ Ba tới phải không?</p><p>(A) Bạn có thể mượn của tôi.</p><p><strong>(B) Tôi sẽ phải kiểm tra lịch của mình.</strong></p><p>(C) Vâng, đó là một cuộc họp tốt.</p>"
+    },
+    {
+      "question_number": 20,
+      "part": 2,
+      "title": "Part 2 - Câu 20",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q20.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Why aren't there any brochures in the lobby?",
+          "vi": "Tại sao không có bất kỳ tập quảng cáo nào ở sảnh?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "No, I haven't received my confirmation e-mail yet.",
+          "vi": "Không, tôi vẫn chưa nhận được email xác nhận.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "My winter coat.",
+          "vi": "Áo khoác mùa đông của tôi.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Because someone just took the last one.",
+          "vi": "Bởi vì ai đó vừa lấy cái cuối cùng rồi.",
+          "is_correct": true
+        }
+      ],
+      "correct_choice": "C",
+      "audio_transcript": "<p>Why aren't there any brochures in the lobby?</p><p>(A) No, I haven't received my confirmation e-mail yet.</p><p>(B) My winter coat.</p><p><strong>(C) Because someone just took the last one.</strong></p>",
+      "info_vi": "<p>Tại sao không có bất kỳ tập quảng cáo nào ở sảnh?</p><p>(A) Không, tôi vẫn chưa nhận được email xác nhận.</p><p>(B) Áo khoác mùa đông của tôi.</p><p><strong>(C) Bởi vì ai đó vừa lấy cái cuối cùng rồi.</strong></p>"
+    },
+    {
+      "question_number": 21,
+      "part": 2,
+      "title": "Part 2 - Câu 21",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q21.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "What's the process for submitting my expense report?",
+          "vi": "Quy trình nộp báo cáo chi phí của tôi là gì?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "You send it to the finance department.",
+          "vi": "Bạn gửi nó cho bộ phận tài chính.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "The end of the day.",
+          "vi": "Cuối ngày.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "That's correct.",
+          "vi": "Đúng rồi.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "A",
+      "audio_transcript": "<p>What's the process for submitting my expense report?</p><p><strong>(A) You send it to the finance department.</strong></p><p>(B) The end of the day.</p><p>(C) That's correct.</p><p><br></p>",
+      "info_vi": "<p>Quy trình nộp báo cáo chi phí của tôi là gì?</p><p><strong>(A) Bạn gửi nó cho bộ phận tài chính.</strong></p><p>(B) Cuối ngày.</p><p>(C) Đúng rồi.</p>"
+    },
+    {
+      "question_number": 22,
+      "part": 2,
+      "title": "Part 2 - Câu 22",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q22.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Do you sell your products online or in stores?",
+          "vi": "Bạn bán sản phẩm của mình trực tuyến hay tại các cửa hàng?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "About twenty percent off.",
+          "vi": "Giảm giá khoảng 20%.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "A product demonstration.",
+          "vi": "Một buổi trình diễn sản phẩm.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Only online.",
+          "vi": "Chỉ trực tuyến thôi.",
+          "is_correct": true
+        }
+      ],
+      "correct_choice": "C",
+      "audio_transcript": "<p>Do you sell your products online or in stores?</p><p>(A) About twenty percent off.</p><p>(B) A product demonstration.</p><p><strong>(C) Only online.</strong></p><p><br></p>",
+      "info_vi": "<p>Bạn bán sản phẩm của mình trực tuyến hay tại các cửa hàng?</p><p>(A) Giảm giá khoảng 20%.</p><p>(B) Một buổi trình diễn sản phẩm.</p><p><strong>(C) Chỉ trực tuyến thôi.</strong></p>"
+    },
+    {
+      "question_number": 23,
+      "part": 2,
+      "title": "Part 2 - Câu 23",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q23.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "How often do you charge this device?",
+          "vi": "Bạn sạc thiết bị này bao lâu một lần?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "Whenever the light turns red.",
+          "vi": "Bất cứ khi nào đèn chuyển sang màu đỏ.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "A wireless one.",
+          "vi": "Một cái không dây.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "At the hardware store.",
+          "vi": "Tại cửa hàng kim khí.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "A",
+      "audio_transcript": "<p>How often do you charge this device?</p><p><strong>(A) Whenever the light turns red.</strong></p><p>(B) A wireless one.</p><p>(C) At the hardware store.</p><p><br></p>",
+      "info_vi": "<p>Bạn sạc thiết bị này bao lâu một lần?</p><p><strong>(A) Bất cứ khi nào đèn chuyển sang màu đỏ.</strong></p><p>(B) Một cái không dây.</p><p>(C) Tại cửa hàng kim khí.</p>"
+    },
+    {
+      "question_number": 24,
+      "part": 2,
+      "title": "Part 2 - Câu 24",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q24.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "The tickets to Friday night's concert cost ten dollars each.",
+          "vi": "Vé cho buổi hòa nhạc tối thứ Sáu có giá mười đô la mỗi chiếc.",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "Actually, they're fifteen.",
+          "vi": "Thực ra, chúng là mười lăm đô la.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "No, I can't play the guitar.",
+          "vi": "Không, tôi không biết chơi guitar.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "It's in aisle five.",
+          "vi": "Nó ở lối đi số năm.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "A",
+      "audio_transcript": "<p>The tickets to Friday night's concert cost ten dollars each.</p><p><strong>(A) Actually, they're fifteen.</strong></p><p>(B) No, I can't play the guitar.</p><p>(C) It's in aisle five.</p><p><br></p>",
+      "info_vi": "<p>Vé cho buổi hòa nhạc tối thứ Sáu có giá mười đô la mỗi chiếc.</p><p><strong>(A) Thực ra, chúng là mười lăm đô la.</strong></p><p>(B) Không, tôi không biết chơi guitar.</p><p>(C) Nó ở lối đi số năm.</p>"
+    },
+    {
+      "question_number": 25,
+      "part": 2,
+      "title": "Part 2 - Câu 25",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q25.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Can't you update the database today?",
+          "vi": "Hôm nay bạn không thể cập nhật cơ sở dữ liệu sao?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "I did it yesterday.",
+          "vi": "Tôi đã làm nó vào ngày hôm qua rồi.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "That's an interesting movie.",
+          "vi": "Đó là một bộ phim thú vị.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "No, just me.",
+          "vi": "Không, chỉ mình tôi thôi.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "A",
+      "audio_transcript": "<p>Can't you update the database today?</p><p><strong>(A) I did it yesterday.</strong></p><p>(B) That's an interesting movie.</p><p>(C) No, just me.</p><p><br></p>",
+      "info_vi": "<p>Hôm nay bạn không thể cập nhật cơ sở dữ liệu sao?</p><p><strong>(A) Tôi đã làm nó vào ngày hôm qua rồi.</strong></p><p>(B) Đó là một bộ phim thú vị.</p><p>(C) Không, chỉ mình tôi thôi.</p>"
+    },
+    {
+      "question_number": 26,
+      "part": 2,
+      "title": "Part 2 - Câu 26",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q26.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "How are we going to fit the extra supplies in that closet?",
+          "vi": "Làm thế nào chúng ta sẽ xếp những vật dụng bổ sung vào cái tủ đó?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "I've already read them.",
+          "vi": "Tôi đã đọc chúng rồi.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "Natalie's in charge of supplies.",
+          "vi": "Natalie chịu trách nhiệm về vật tư.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "It's the door at the end of the hallway.",
+          "vi": "Đó là cánh cửa ở cuối hành lang.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "B",
+      "audio_transcript": "<p>How are we going to fit the extra supplies in that closet?</p><p>(A) I've already read them.</p><p><strong>(B) Natalie's in charge of supplies.</strong></p><p>(C) It's the door at the end of the hallway.</p><p><br></p>",
+      "info_vi": "<p>Làm thế nào chúng ta sẽ xếp những vật dụng bổ sung vào cái tủ đó?</p><p>(A) Tôi đã đọc chúng rồi.</p><p><strong>(B) Natalie chịu trách nhiệm về vật tư.</strong></p><p>(C) Đó là cánh cửa ở cuối hành lang.</p>"
+    },
+    {
+      "question_number": 27,
+      "part": 2,
+      "title": "Part 2 - Câu 27",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q27.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Have all the new windows been installed?",
+          "vi": "Tất cả cửa sổ mới đã được lắp đặt chưa?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "Sure, I'll close the blinds.",
+          "vi": "Chắc chắn rồi, tôi sẽ đóng rèm lại.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "The construction crew is almost finished.",
+          "vi": "Đội thi công đã gần hoàn thành rồi.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "This isn't the tallest ladder available.",
+          "vi": "Đây không phải là chiếc thang cao nhất hiện có.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "B",
+      "audio_transcript": "<p>Have all the new windows been installed?</p><p>(A) Sure, I'll close the blinds.</p><p><strong>(B) The construction crew is almost finished.</strong></p><p>(C) This isn't the tallest ladder available.</p><p><br></p>",
+      "info_vi": "<p>Tất cả cửa sổ mới đã được lắp đặt chưa?</p><p>(A) Chắc chắn rồi, tôi sẽ đóng rèm lại.</p><p><strong>(B) Đội thi công đã gần hoàn thành rồi.</strong></p><p>(C) Đây không phải là chiếc thang cao nhất hiện có.</p>"
+    },
+    {
+      "question_number": 28,
+      "part": 2,
+      "title": "Part 2 - Câu 28",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q28.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Would you rather go to lunch now or at noon?",
+          "vi": "Bạn muốn đi ăn trưa ngay bây giờ hay vào giữa trưa?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "I'm taking a client to lunch.",
+          "vi": "Tôi đang đưa một khách hàng đi ăn trưa.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "On the corner of Fourth and Main.",
+          "vi": "Ở góc phố số Bốn và Main.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "The daily special is soup and a sandwich.",
+          "vi": "Món đặc biệt hàng ngày là súp và bánh mì sandwich.",
+          "is_correct": false
+        }
+      ],
+      "correct_choice": "A",
+      "audio_transcript": "<p>Would you rather go to lunch now or at noon?</p><p><strong>(A) I'm taking a client to lunch.</strong></p><p>(B) On the corner of Fourth and Main.</p><p>(C) The daily special is soup and a sandwich.</p><p><br></p>",
+      "info_vi": "<p>Bạn muốn đi ăn trưa ngay bây giờ hay vào giữa trưa?</p><p><strong>(A) Tôi đang đưa một khách hàng đi ăn trưa.</strong></p><p>(B) Ở góc phố số 4 và phố Main.</p><p>(C) Món đặc biệt hàng ngày là súp và bánh mì sandwich.</p>"
+    },
+    {
+      "question_number": 29,
+      "part": 2,
+      "title": "Part 2 - Câu 29",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q29.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "You're taking the training in the afternoon, aren't you?",
+          "vi": "Bạn sẽ tham gia đào tạo vào buổi chiều, phải không?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "The new head of the accounting department.",
+          "vi": "Trưởng bộ phận kế toán mới.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "No, I take my coffee black.",
+          "vi": "Không, tôi uống cà phê đen.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "Well, it depends on my schedule.",
+          "vi": "Chà, nó còn tùy thuộc vào lịch trình của tôi.",
+          "is_correct": true
+        }
+      ],
+      "correct_choice": "C",
+      "audio_transcript": "<p>You're taking the training in the afternoon, aren't you?</p><p>(A) The new head of the accounting department.</p><p>(B) No, I take my coffee black.</p><p><strong>(C) Well, it depends on my schedule.</strong></p><p><br></p>",
+      "info_vi": "<p>Bạn sẽ tham gia đào tạo vào buổi chiều, phải không?</p><p>(A) Trưởng bộ phận kế toán mới.</p><p>(B) Không, tôi uống cà phê đen.</p><p><strong>(C) Chà, nó còn tùy thuộc vào lịch trình của tôi.</strong></p>"
+    },
+    {
+      "question_number": 30,
+      "part": 2,
+      "title": "Part 2 - Câu 30",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q30.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "Shouldn't Ms. Ishida look over the financial projections?",
+          "vi": "Chẳng phải cô Ishida nên xem qua các dự báo tài chính sao?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "I just got this monitor.",
+          "vi": "Tôi vừa mới nhận được cái màn hình này.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "To the south entrance.",
+          "vi": "Đến lối vào phía Nam.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "I'm meeting with her at ten.",
+          "vi": "Tôi sẽ gặp cô ấy lúc mười giờ.",
+          "is_correct": true
+        }
+      ],
+      "correct_choice": "C",
+      "audio_transcript": "<p>Shouldn't Ms. Ishida look over the financial projections?</p><p>(A) I just got this monitor.</p><p>(B) To the south entrance.</p><p><strong>(C) I'm meeting with her at ten.</strong></p><p><br></p>",
+      "info_vi": "<p>Chẳng phải cô Ishida nên xem qua các dự báo tài chính sao?</p><p>(A) Tôi vừa mới nhận được cái màn hình này.</p><p>(B) Đến lối vào phía Nam.</p><p><strong>(C) Tôi sẽ gặp cô ấy lúc mười giờ.</strong></p>"
+    },
+    {
+      "question_number": 31,
+      "part": 2,
+      "title": "Part 2 - Câu 31",
+      "audio_file": "/media/6ae70664346cffb23d1eaab3/audios/q31.mp3",
+      "image_file": null,
+      "items": [
+        {
+          "key": "Q",
+          "label": "Câu hỏi (Question)",
+          "en": "When are you going to choose a new project manager?",
+          "vi": "Khi nào bạn định chọn quản lý dự án mới?",
+          "is_correct": false
+        },
+        {
+          "key": "A",
+          "label": "(A)",
+          "en": "The projector's not working correctly.",
+          "vi": "Máy chiếu không hoạt động chính xác.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "label": "(B)",
+          "en": "Next to the front entrance.",
+          "vi": "Cạnh lối vào phía trước.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "label": "(C)",
+          "en": "I'm really busy this week.",
+          "vi": "Tuần này tôi thực sự bận.",
+          "is_correct": true
+        }
+      ],
+      "correct_choice": "C",
+      "audio_transcript": "<p>When are you going to choose a new project manager?</p><p>(A) The projector's not working correctly.</p><p>(B) Next to the front entrance.</p><p><strong>(C) I'm really busy this week.</strong></p><p><br></p>",
+      "info_vi": "<p>Khi nào bạn định chọn quản lý dự án mới?</p><p>(A) Máy chiếu không hoạt động chính xác.</p><p>(B) Cạnh lối vào phía trước.</p><p><strong>(C) Tuần này tôi thực sự bận.</strong></p>"
+    }
+  ]
+}

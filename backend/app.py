@@ -3,7 +3,7 @@ import json
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from pydantic import BaseModel
 from typing import Optional
 
@@ -79,7 +79,7 @@ def start_crawl(req: CrawlRequest):
 
         res = crawl_exam_session(req.url, manual_token=req.token, progress_cb=on_progress)
         crawl_status["status"] = "success"
-        crawl_status["message"] = "Đã cào thành công toàn bộ 31 câu audio & hình ảnh!"
+        crawl_status["message"] = "Đã cào thành công toàn bộ 31 câu audio & lưu vào MongoDB Atlas!"
         crawl_status["percentage"] = 100
         crawl_status["session_id"] = res["session_id"]
         return res
@@ -93,9 +93,45 @@ def start_crawl(req: CrawlRequest):
 def get_crawl_status():
     return crawl_status
 
-# Mount media directory for audio & image access
-os.makedirs(DATA_DIR, exist_ok=True)
-app.mount("/media", StaticFiles(directory=DATA_DIR), name="media")
+# Smart Media Route: Serves local file if exists, otherwise redirects to Parroto CDN URL!
+@app.get("/media/{session_id}/audios/{filename}")
+def serve_audio(session_id: str, filename: str):
+    local_path = os.path.join(DATA_DIR, session_id, "audios", filename)
+    if os.path.exists(local_path) and os.path.getsize(local_path) > 100:
+        return FileResponse(local_path, media_type="audio/mpeg")
+    
+    # Cloud fallback: query MongoDB for remote_audio_url
+    data = get_session_details(session_id)
+    if data:
+        # filename is e.g. q1.mp3 -> question_number = 1
+        m = filename.replace(".mp3", "").replace("q", "")
+        if m.isdigit():
+            q_num = int(m)
+            for q in data.get("questions", []):
+                if q.get("question_number") == q_num:
+                    remote = q.get("remote_audio_url")
+                    if remote:
+                        return RedirectResponse(url=remote, status_code=307)
+    raise HTTPException(status_code=404, detail="Audio not found")
+
+@app.get("/media/{session_id}/images/{filename}")
+def serve_image(session_id: str, filename: str):
+    local_path = os.path.join(DATA_DIR, session_id, "images", filename)
+    if os.path.exists(local_path) and os.path.getsize(local_path) > 100:
+        return FileResponse(local_path, media_type="image/webp")
+    
+    # Cloud fallback
+    data = get_session_details(session_id)
+    if data:
+        m = filename.replace(".webp", "").replace("q", "")
+        if m.isdigit():
+            q_num = int(m)
+            for q in data.get("questions", []):
+                if q.get("question_number") == q_num:
+                    remote = q.get("remote_image_url")
+                    if remote:
+                        return RedirectResponse(url=remote, status_code=307)
+    raise HTTPException(status_code=404, detail="Image not found")
 
 # Mount frontend
 FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend"))

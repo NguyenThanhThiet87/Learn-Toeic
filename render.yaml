@@ -8,3 +8,5 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
+      - key: MONGODB_URI
+        value: mongodb+srv://thietnguyenthanh300_db_user:admin123@cluster0.atvdjic.mongodb.net/?retryWrites=true&w=majority

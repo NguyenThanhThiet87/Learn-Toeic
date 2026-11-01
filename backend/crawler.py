@@ -3,20 +3,17 @@ import re
 import json
 import urllib.request
 import urllib.error
-import threading
 from typing import Optional, Callable
 from backend.token_extractor import get_best_token
 from backend.decryptor import decrypt_parroto_data
 from backend.exam_parser import parse_part1_question, extract_part2_question_and_choices
-
-DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "sessions"))
+from backend.db import save_session_to_db, get_sessions_from_db, get_session_by_id_from_db, DATA_DIR
 
 def extract_session_id(url_or_id: str) -> str:
     url_or_id = url_or_id.strip()
     m = re.search(r'/session/([a-f0-9]{24})', url_or_id)
     if m:
         return m.group(1)
-    # Check if raw 24-char hex id
     if re.fullmatch(r'[a-f0-9]{24}', url_or_id):
         return url_or_id
     raise ValueError(f"Không nhận diện được Session ID hợp lệ từ: {url_or_id}")
@@ -24,17 +21,20 @@ def extract_session_id(url_or_id: str) -> str:
 def download_file(url: str, dest_path: str):
     """Download audio/image file with timeout and headers."""
     if os.path.exists(dest_path) and os.path.getsize(dest_path) > 100:
-        return # Already downloaded
+        return
     req = urllib.request.Request(url, headers={
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
         'Referer': 'https://parroto.app/'
     })
-    with urllib.request.urlopen(req, timeout=30) as resp, open(dest_path, 'wb') as out_f:
-        while True:
-            chunk = resp.read(64 * 1024)
-            if not chunk:
-                break
-            out_f.write(chunk)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp, open(dest_path, 'wb') as out_f:
+            while True:
+                chunk = resp.read(64 * 1024)
+                if not chunk:
+                    break
+                out_f.write(chunk)
+    except Exception as e:
+        print(f"Warning: Không thể tải file {url}: {e}")
 
 def fetch_api(url: str, token: str) -> dict:
     req = urllib.request.Request(url, headers={
@@ -124,6 +124,8 @@ def crawl_exam_session(session_url_or_id: str, manual_token: Optional[str] = Non
             "title": f"Part 1 - Câu {q_num}",
             "audio_file": f"/media/{session_id}/audios/{local_audio_name}",
             "image_file": f"/media/{session_id}/images/{local_image_name}" if image_remote else None,
+            "remote_audio_url": audio_remote,
+            "remote_image_url": image_remote,
             "items": items,
             "correct_choice": correct_choice,
             "audio_transcript": ctx.get('audio_transcript', ''),
@@ -160,6 +162,8 @@ def crawl_exam_session(session_url_or_id: str, manual_token: Optional[str] = Non
             "title": f"Part 2 - Câu {q_num}",
             "audio_file": f"/media/{session_id}/audios/{local_audio_name}",
             "image_file": None,
+            "remote_audio_url": audio_remote,
+            "remote_image_url": None,
             "items": items,
             "correct_choice": correct_choice,
             "audio_transcript": ctx.get('audio_transcript', ''),
@@ -170,63 +174,21 @@ def crawl_exam_session(session_url_or_id: str, manual_token: Optional[str] = Non
             pct = 60 + int((idx / max(total_p2, 1)) * 35)
             progress_cb(f"Đang tải audio câu {q_num}...", pct)
 
-    # Lưu session_data.json
     final_data = {
         "session_id": session_id,
         "title": exam_title,
         "total_questions": len(questions_list),
         "questions": questions_list
     }
-    
-    with open(os.path.join(session_folder, "session_data.json"), "w", encoding="utf-8") as f:
-        json.dump(final_data, f, indent=2, ensure_ascii=False)
 
-    # Cập nhật danh sách sessions
-    update_sessions_index(session_id, exam_title, len(questions_list))
+    # Save to MongoDB & local disk
+    save_session_to_db(final_data)
 
-    if progress_cb: progress_cb("Hoàn tất cào dữ liệu và chuẩn bị bài tập!", 100)
+    if progress_cb: progress_cb("Hoàn tất cào dữ liệu và đã lưu vào MongoDB Atlas!", 100)
     return final_data
 
-def update_sessions_index(session_id: str, title: str, total_q: int):
-    os.makedirs(DATA_DIR, exist_ok=True)
-    idx_file = os.path.join(DATA_DIR, "index.json")
-    sessions = []
-    if os.path.exists(idx_file):
-        try:
-            with open(idx_file, "r", encoding="utf-8") as f:
-                sessions = json.load(f)
-        except Exception:
-            sessions = []
-
-    # Update or append
-    existing = next((s for s in sessions if s['session_id'] == session_id), None)
-    if existing:
-        existing['title'] = title
-        existing['total_questions'] = total_q
-    else:
-        sessions.insert(0, {
-            "session_id": session_id,
-            "title": title,
-            "total_questions": total_q
-        })
-
-    with open(idx_file, "w", encoding="utf-8") as f:
-        json.dump(sessions, f, indent=2, ensure_ascii=False)
-
 def list_downloaded_sessions() -> list:
-    os.makedirs(DATA_DIR, exist_ok=True)
-    idx_file = os.path.join(DATA_DIR, "index.json")
-    if os.path.exists(idx_file):
-        try:
-            with open(idx_file, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            pass
-    return []
+    return get_sessions_from_db()
 
 def get_session_details(session_id: str) -> Optional[dict]:
-    s_path = os.path.join(DATA_DIR, session_id, "session_data.json")
-    if os.path.exists(s_path):
-        with open(s_path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return None
+    return get_session_by_id_from_db(session_id)

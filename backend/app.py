@@ -11,7 +11,13 @@ from typing import Optional
 
 from backend.crawler import crawl_exam_session, list_downloaded_sessions, get_session_details, DATA_DIR
 from backend.token_extractor import get_best_token, extract_tokens_from_chrome
-from backend.db import save_vocab_item, get_vocab_list, delete_vocab_item, toggle_vocab_mastered
+from backend.db import (
+    save_vocab_item,
+    get_vocab_list,
+    delete_vocab_item,
+    toggle_vocab_mastered,
+    update_session_progress
+)
 
 app = FastAPI(title="TOEIC Dictation Practice Tool")
 
@@ -36,6 +42,11 @@ class VocabRequest(BaseModel):
     context_vi: Optional[str] = ""
     session_id: Optional[str] = ""
     question_number: Optional[int] = 0
+
+class ProgressUpdateRequest(BaseModel):
+    completed_questions: list[int] = []
+    completed_items: dict[str, list[int]] = {}
+    last_question_idx: int = 0
 
 # In-memory crawl status
 crawl_status = {
@@ -72,6 +83,12 @@ def get_session(session_id: str):
     if not data:
         raise HTTPException(status_code=404, detail="Không tìm thấy bài thi")
     return data
+
+@app.post("/api/sessions/{session_id}/progress")
+def save_progress(session_id: str, req: ProgressUpdateRequest):
+    payload = req.model_dump() if hasattr(req, "model_dump") else req.dict()
+    saved = update_session_progress(session_id, payload)
+    return {"status": "ok", "progress": saved}
 
 @app.post("/api/crawl")
 def start_crawl(req: CrawlRequest):

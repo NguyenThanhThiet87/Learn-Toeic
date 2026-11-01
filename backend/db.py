@@ -126,6 +126,39 @@ def get_session_by_id_from_db(session_id: str) -> Optional[Dict]:
             pass
     return None
 
+def update_session_progress(session_id: str, progress: Dict) -> Dict:
+    """Update user's dictation progress for a specific session in MongoDB and local disk."""
+    clean_progress = {
+        "completed_questions": progress.get("completed_questions", []),
+        "completed_items": progress.get("completed_items", {}),
+        "last_question_idx": int(progress.get("last_question_idx", 0)),
+        "updated_at": int(time.time() * 1000)
+    }
+
+    try:
+        col = get_mongo_collection()
+        if col is not None:
+            col.update_one(
+                {"session_id": session_id},
+                {"$set": {"progress": clean_progress}}
+            )
+    except Exception as e:
+        print(f"[MongoDB Progress] Lỗi lưu tiến độ session {session_id}:", e)
+
+    # Also update local session_data.json if present
+    s_path = os.path.join(DATA_DIR, session_id, "session_data.json")
+    if os.path.exists(s_path):
+        try:
+            with open(s_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            data["progress"] = clean_progress
+            with open(s_path, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            print(f"[Local Progress] Lỗi lưu tiến độ local {session_id}:", e)
+
+    return clean_progress
+
 # ================= VOCABULARY FUNCTIONS =================
 
 def _load_local_vocab() -> List[Dict]:

@@ -35,6 +35,8 @@
     <div style="width: 1px; height: 24px; background-color: var(--border-color); margin: 0 4px;"></div>
     <div class="nav-part-label">Part 2 (7–31):</div>
     <div class="nav-q-list" id="nav-p2"></div>
+    <div style="flex: 1;"></div>
+    <div class="nav-progress-badge" id="nav-progress-badge">Đã hoàn thành: 0 / 31 câu</div>
   </div>
 
   <!-- Main Content -->
@@ -54,7 +56,10 @@
               <span id="q-title">Đang tải...</span>
               <span class="badge-part" id="q-part-badge">Part 1</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <button type="button" id="btn-reset-q" class="btn-reset-q" title="Xóa kết quả đã điền của câu này để luyện gõ lại từ đầu">
+                🔄 Làm lại câu này
+              </button>
               <span style="font-size: 13px; color: var(--text-muted);">Tốc độ:</span>
               <select id="speed-select" class="session-select" style="padding: 4px 8px; font-size: 13px;">
                 <option value="0.75">0.75x</option>

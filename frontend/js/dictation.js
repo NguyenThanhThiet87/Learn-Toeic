@@ -1,16 +1,37 @@
 class DictationEngine {
-  constructor(onQuestionCompleted) {
+  constructor(onQuestionCompleted, onItemCompleted) {
     this.container = document.getElementById("dictation-container");
     this.items = [];
     this.itemStates = []; // { completed: false, typed: "" }
     this.onQuestionCompleted = onQuestionCompleted;
+    this.onItemCompleted = onItemCompleted;
 
     this.bindGlobalShortcuts();
   }
 
-  loadQuestion(questionData) {
+  loadQuestion(questionData, completedItemIndices = []) {
     this.questionData = questionData;
     this.items = questionData.items || [];
+    const doneSet = new Set(completedItemIndices || []);
+    this.itemStates = this.items.map((item, idx) => {
+      const isDone = doneSet.has(idx);
+      return {
+        completed: isDone,
+        typed: isDone ? item.en : ""
+      };
+    });
+    this.render();
+  }
+
+  getCompletedIndices() {
+    const indices = [];
+    this.itemStates.forEach((st, idx) => {
+      if (st.completed) indices.push(idx);
+    });
+    return indices;
+  }
+
+  resetQuestion() {
     this.itemStates = this.items.map(() => ({ completed: false, typed: "" }));
     this.render();
   }
@@ -28,8 +49,10 @@ class DictationEngine {
     this.container.innerHTML = "";
 
     this.items.forEach((item, idx) => {
+      const isDone = this.itemStates[idx] && this.itemStates[idx].completed;
+
       const itemEl = document.createElement("div");
-      itemEl.className = "dictation-item";
+      itemEl.className = "dictation-item" + (isDone ? " item-completed" : "");
       itemEl.id = `dictation-item-${idx}`;
 
       // Header
@@ -44,9 +67,9 @@ class DictationEngine {
       }
 
       const status = document.createElement("div");
-      status.className = "status-check unmatched";
+      status.className = isDone ? "status-check matched" : "status-check unmatched";
       status.id = `status-${idx}`;
-      status.textContent = "Chưa hoàn thành";
+      status.innerHTML = isDone ? "✓ Chính xác!" : "Chưa hoàn thành";
 
       header.appendChild(label);
       header.appendChild(status);
@@ -62,11 +85,14 @@ class DictationEngine {
 
       const input = document.createElement("input");
       input.type = "text";
-      input.className = "dictation-input";
+      input.className = "dictation-input" + (isDone ? " completed" : "");
       input.id = `input-${idx}`;
       input.placeholder = `Nghe và gõ lại ${item.label.toLowerCase()}...`;
       input.autocomplete = "off";
       input.spellcheck = false;
+      if (isDone) {
+        input.value = item.en;
+      }
 
       const btnHint = document.createElement("button");
       btnHint.type = "button";
@@ -100,20 +126,25 @@ class DictationEngine {
 
       this.container.appendChild(itemEl);
 
-      // Initial hint render
-      this.renderMaskedLine(idx, "");
+      // Initial hint render (full text if already completed, otherwise masked)
+      this.renderMaskedLine(idx, isDone ? item.en : "");
     });
 
-    // Auto-focus first input
+    // Auto-focus first incomplete input
     setTimeout(() => {
-      const firstInput = document.getElementById("input-0");
-      if (firstInput) firstInput.focus();
+      const firstIncompleteIdx = this.itemStates.findIndex(s => !s.completed);
+      const targetIdx = firstIncompleteIdx >= 0 ? firstIncompleteIdx : 0;
+      const targetInput = document.getElementById(`input-${targetIdx}`);
+      if (targetInput && firstIncompleteIdx >= 0) {
+        targetInput.focus();
+      }
     }, 100);
   }
 
   handleInput(idx, typedVal, isSubmit = false) {
     const item = this.items[idx];
     const target = item.en;
+    const wasCompleted = this.itemStates[idx].completed;
     this.itemStates[idx].typed = typedVal;
 
     this.renderMaskedLine(idx, typedVal);
@@ -143,6 +174,10 @@ class DictationEngine {
       // Re-render hint line as 100% correct
       this.renderMaskedLine(idx, target);
 
+      if (!wasCompleted && this.onItemCompleted) {
+        this.onItemCompleted(this.questionData.question_number, this.getCompletedIndices());
+      }
+
       // Focus next input
       this.focusNext(idx);
       this.checkAllCompleted();
@@ -154,6 +189,10 @@ class DictationEngine {
         statusEl.textContent = "Đang điền...";
       }
       if (itemEl) itemEl.classList.remove("item-completed");
+
+      if (wasCompleted && this.onItemCompleted) {
+        this.onItemCompleted(this.questionData.question_number, this.getCompletedIndices());
+      }
     }
   }
 

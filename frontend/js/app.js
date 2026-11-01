@@ -4,17 +4,20 @@ class App {
     this.sessionData = null;
     this.currentQuestionIdx = 0;
     this.completedQuestions = new Set();
+    this.completedItems = {}; // { "1": [0, 1, 2, 3], "2": [0, 1] }
 
     // DOM Elements
     this.sessionSelect = document.getElementById("session-select");
     this.btnOpenCrawl = document.getElementById("btn-open-crawl");
     this.navP1 = document.getElementById("nav-p1");
     this.navP2 = document.getElementById("nav-p2");
+    this.navProgressBadge = document.getElementById("nav-progress-badge");
     this.workspaceGrid = document.getElementById("workspace-grid");
     this.imageCard = document.getElementById("image-card");
     this.qImage = document.getElementById("q-image");
     this.qTitle = document.getElementById("q-title");
     this.qPartBadge = document.getElementById("q-part-badge");
+    this.btnResetQ = document.getElementById("btn-reset-q");
     this.btnPrev = document.getElementById("btn-prev-q");
     this.btnNext = document.getElementById("btn-next-q");
 
@@ -32,7 +35,10 @@ class App {
     // Submodules
     this.audioController = new AudioController();
     this.translator = new HighlightTranslator();
-    this.dictationEngine = new DictationEngine((qNum) => this.onQuestionCompleted(qNum));
+    this.dictationEngine = new DictationEngine(
+      (qNum) => this.onQuestionCompleted(qNum),
+      (qNum, indices) => this.onItemCompleted(qNum, indices)
+    );
 
     this.bindEvents();
     this.init();
@@ -79,12 +85,66 @@ class App {
       const resp = await fetch(`/api/sessions/${sessionId}`);
       this.sessionData = await resp.json();
 
-      // Load completed questions from localStorage
-      const savedCompleted = localStorage.getItem(`completed_${sessionId}`);
-      this.completedQuestions = savedCompleted ? new Set(JSON.parse(savedCompleted)) : new Set();
+      // Merge progress from Server (MongoDB) + localStorage
+      const serverProg = this.sessionData.progress || {};
+      let localProg = {};
+      try {
+        const rawLocal = localStorage.getItem(`progress_${sessionId}`);
+        if (rawLocal) localProg = JSON.parse(rawLocal);
+      } catch (e) {}
+
+      // Legacy completed_${sessionId} support
+      let legacyCompleted = [];
+      try {
+        const rawLegacy = localStorage.getItem(`completed_${sessionId}`);
+        if (rawLegacy) legacyCompleted = JSON.parse(rawLegacy);
+      } catch (e) {}
+
+      const mergedQuestions = new Set([
+        ...(serverProg.completed_questions || []),
+        ...(localProg.completed_questions || []),
+        ...legacyCompleted
+      ]);
+      this.completedQuestions = mergedQuestions;
+
+      const mergedItems = {};
+      const sItems = serverProg.completed_items || {};
+      const lItems = localProg.completed_items || {};
+      const allKeys = new Set([...Object.keys(sItems), ...Object.keys(lItems)]);
+      allKeys.forEach((k) => {
+        const combined = new Set([...(sItems[k] || []), ...(lItems[k] || [])]);
+        mergedItems[k] = [...combined].sort((a, b) => a - b);
+      });
+
+      // Ensure any question marked completed also has all its items marked completed
+      const questions = this.sessionData.questions || [];
+      questions.forEach((q) => {
+        const qKey = String(q.question_number);
+        const totalItems = (q.items || []).length;
+        if (this.completedQuestions.has(q.question_number)) {
+          mergedItems[qKey] = Array.from({ length: totalItems }, (_, i) => i);
+        } else if (mergedItems[qKey] && mergedItems[qKey].length === totalItems && totalItems > 0) {
+          this.completedQuestions.add(q.question_number);
+        }
+      });
+      this.completedItems = mergedItems;
 
       this.renderNavButtons();
-      this.goToQuestion(0);
+      this.updateProgressBadge();
+
+      // Determine starting question index (saved last_question_idx or first incomplete)
+      let startIdx = 0;
+      if (typeof localProg.last_question_idx === "number") {
+        startIdx = localProg.last_question_idx;
+      } else if (typeof serverProg.last_question_idx === "number") {
+        startIdx = serverProg.last_question_idx;
+      } else {
+        const firstIncomplete = questions.findIndex(q => !this.completedQuestions.has(q.question_number));
+        if (firstIncomplete >= 0) startIdx = firstIncomplete;
+      }
+      if (startIdx < 0 || startIdx >= questions.length) startIdx = 0;
+
+      this.goToQuestion(startIdx, false);
     } catch (err) {
       alert("Không tải được dữ liệu đề thi: " + err);
     }
@@ -101,9 +161,7 @@ class App {
       btn.textContent = q.question_number;
       btn.id = `nav-btn-${idx}`;
 
-      if (this.completedQuestions.has(q.question_number)) {
-        btn.classList.add("completed");
-      }
+      this.applyNavBtnState(btn, q);
 
       btn.addEventListener("click", () => this.goToQuestion(idx));
 
@@ -115,7 +173,48 @@ class App {
     });
   }
 
-  goToQuestion(idx) {
+  applyNavBtnState(btn, q) {
+    if (!btn || !q) return;
+    const qNum = q.question_number;
+    const doneItems = this.completedItems[String(qNum)] || [];
+    btn.classList.remove("completed", "partial");
+    if (this.completedQuestions.has(qNum)) {
+      btn.classList.add("completed");
+    } else if (doneItems.length > 0) {
+      btn.classList.add("partial");
+    }
+  }
+
+  updateProgressBadge() {
+    if (!this.navProgressBadge || !this.sessionData) return;
+    const total = (this.sessionData.questions || []).length || 31;
+    const done = this.completedQuestions.size;
+    this.navProgressBadge.textContent = `Đã hoàn thành: ${done} / ${total} câu`;
+  }
+
+  async syncProgress() {
+    if (!this.currentSessionId) return;
+    const payload = {
+      completed_questions: [...this.completedQuestions].sort((a, b) => a - b),
+      completed_items: this.completedItems,
+      last_question_idx: this.currentQuestionIdx
+    };
+
+    localStorage.setItem(`progress_${this.currentSessionId}`, JSON.stringify(payload));
+    localStorage.setItem(`completed_${this.currentSessionId}`, JSON.stringify(payload.completed_questions));
+
+    try {
+      await fetch(`/api/sessions/${this.currentSessionId}/progress`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.warn("Không thể đồng bộ tiến độ lên server, đã lưu tại localStorage:", err);
+    }
+  }
+
+  goToQuestion(idx, autoPlay = true) {
     const questions = this.sessionData.questions || [];
     if (idx < 0 || idx >= questions.length) return;
 
@@ -152,24 +251,35 @@ class App {
     // Update Translator context
     this.translator.setItems(q.items, this.currentSessionId, q.question_number);
 
-    // Load Dictation Items
-    this.dictationEngine.loadQuestion(q);
+    // Load Dictation Items with saved completed item indices
+    const qKey = String(q.question_number);
+    const savedItemIndices = this.completedItems[qKey] || (
+      this.completedQuestions.has(q.question_number)
+        ? (q.items || []).map((_, i) => i)
+        : []
+    );
+    this.dictationEngine.loadQuestion(q, savedItemIndices);
 
     // Update Nav Buttons State
     if (this.btnPrev) this.btnPrev.disabled = (idx === 0);
     this.updateNextBtnState();
 
+    // Save current question index
+    this.syncProgress();
+
     // Auto play audio when switching question
-    setTimeout(() => {
-      this.audioController.play();
-    }, 250);
+    if (autoPlay) {
+      setTimeout(() => {
+        this.audioController.play();
+      }, 250);
+    }
   }
 
   updateNextBtnState() {
     const questions = this.sessionData.questions || [];
     const isLast = (this.currentQuestionIdx === questions.length - 1);
     const q = questions[this.currentQuestionIdx];
-    const isCompleted = this.completedQuestions.has(q.question_number);
+    const isCompleted = q ? this.completedQuestions.has(q.question_number) : false;
 
     if (this.btnNext) {
       if (isLast) {
@@ -188,18 +298,59 @@ class App {
     }
   }
 
+  onItemCompleted(qNum, completedIndices) {
+    const qKey = String(qNum);
+    this.completedItems[qKey] = completedIndices;
+
+    const questions = this.sessionData.questions || [];
+    const q = questions[this.currentQuestionIdx];
+    if (q && q.question_number === qNum) {
+      const totalItems = (q.items || []).length;
+      if (completedIndices.length < totalItems) {
+        this.completedQuestions.delete(qNum);
+      }
+      const navBtn = document.getElementById(`nav-btn-${this.currentQuestionIdx}`);
+      this.applyNavBtnState(navBtn, q);
+    }
+
+    this.updateProgressBadge();
+    this.updateNextBtnState();
+    this.syncProgress();
+  }
+
   onQuestionCompleted(qNum) {
     this.completedQuestions.add(qNum);
-    localStorage.setItem(`completed_${this.currentSessionId}`, JSON.stringify([...this.completedQuestions]));
+    const questions = this.sessionData.questions || [];
+    const q = questions[this.currentQuestionIdx];
+    if (q && q.question_number === qNum) {
+      this.completedItems[String(qNum)] = (q.items || []).map((_, i) => i);
+      const navBtn = document.getElementById(`nav-btn-${this.currentQuestionIdx}`);
+      this.applyNavBtnState(navBtn, q);
+    }
 
-    // Update Nav Button
-    const navBtn = document.getElementById(`nav-btn-${this.currentQuestionIdx}`);
-    if (navBtn) navBtn.classList.add("completed");
-
+    this.updateProgressBadge();
     this.updateNextBtnState();
+    this.syncProgress();
 
-    // Play subtle audio cue or notification
     console.log(`Câu ${qNum} đã hoàn thành chính xác 100%!`);
+  }
+
+  resetCurrentQuestion() {
+    const questions = this.sessionData ? (this.sessionData.questions || []) : [];
+    const q = questions[this.currentQuestionIdx];
+    if (!q) return;
+
+    const qNum = q.question_number;
+    this.completedQuestions.delete(qNum);
+    delete this.completedItems[String(qNum)];
+
+    this.dictationEngine.resetQuestion();
+
+    const navBtn = document.getElementById(`nav-btn-${this.currentQuestionIdx}`);
+    this.applyNavBtnState(navBtn, q);
+    this.updateProgressBadge();
+    this.updateNextBtnState();
+    this.syncProgress();
   }
 
   nextQuestion() {
@@ -305,6 +456,9 @@ class App {
 
     this.btnPrev.addEventListener("click", () => this.prevQuestion());
     this.btnNext.addEventListener("click", () => this.nextQuestion());
+    if (this.btnResetQ) {
+      this.btnResetQ.addEventListener("click", () => this.resetCurrentQuestion());
+    }
 
     // Global shortcut Ctrl+Enter for Next Question
     window.addEventListener("keydown", (e) => {

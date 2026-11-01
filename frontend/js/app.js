@@ -150,7 +150,7 @@ class App {
     this.audioController.load(q.audio_file);
 
     // Update Translator context
-    this.translator.setItems(q.items);
+    this.translator.setItems(q.items, this.currentSessionId, q.question_number);
 
     // Load Dictation Items
     this.dictationEngine.loadQuestion(q);

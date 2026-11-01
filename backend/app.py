@@ -1,6 +1,8 @@
 import os
 import json
-from fastapi import FastAPI, HTTPException
+import urllib.request
+import urllib.parse
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
@@ -9,6 +11,7 @@ from typing import Optional
 
 from backend.crawler import crawl_exam_session, list_downloaded_sessions, get_session_details, DATA_DIR
 from backend.token_extractor import get_best_token, extract_tokens_from_chrome
+from backend.db import save_vocab_item, get_vocab_list, delete_vocab_item, toggle_vocab_mastered
 
 app = FastAPI(title="TOEIC Dictation Practice Tool")
 
@@ -23,6 +26,16 @@ app.add_middleware(
 class CrawlRequest(BaseModel):
     url: str
     token: Optional[str] = None
+
+class VocabRequest(BaseModel):
+    word: str
+    phonetic: Optional[str] = ""
+    part_of_speech: Optional[str] = ""
+    meaning: str
+    context_en: Optional[str] = ""
+    context_vi: Optional[str] = ""
+    session_id: Optional[str] = ""
+    question_number: Optional[int] = 0
 
 # In-memory crawl status
 crawl_status = {
@@ -93,17 +106,127 @@ def start_crawl(req: CrawlRequest):
 def get_crawl_status():
     return crawl_status
 
-# Smart Media Route: Serves local file if exists, otherwise redirects to Parroto CDN URL!
+# ================= WORD LOOKUP & VOCABULARY API =================
+
+POS_VI_MAP = {
+    "noun": "Danh từ",
+    "verb": "Động từ",
+    "adjective": "Tính từ",
+    "adverb": "Trạng từ",
+    "preposition": "Giới từ",
+    "conjunction": "Liên từ",
+    "pronoun": "Đại từ",
+    "interjection": "Thán từ"
+}
+
+@app.get("/api/lookup-word")
+def lookup_word(text: str = Query(..., min_length=1)):
+    clean_text = text.strip()
+    if not clean_text:
+        raise HTTPException(status_code=400, detail="Text rỗng")
+
+    primary_meaning = ""
+    pos_list = []
+    extra_meanings = []
+    phonetic = ""
+
+    # 1. Google Translate GTX with dictionary breakdown (dt=t&dt=bd)
+    try:
+        q_encoded = urllib.parse.quote(clean_text)
+        g_url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=vi&dt=t&dt=bd&q={q_encoded}"
+        req = urllib.request.Request(g_url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=4) as resp:
+            g_data = json.loads(resp.read().decode("utf-8"))
+            if g_data and isinstance(g_data[0], list):
+                primary_meaning = "".join([part[0] for part in g_data[0] if part and part[0]])
+            if len(g_data) > 1 and isinstance(g_data[1], list):
+                for entry in g_data[1]:
+                    if isinstance(entry, list) and len(entry) >= 2:
+                        pos_en = (entry[0] or "").lower()
+                        pos_vi = POS_VI_MAP.get(pos_en, entry[0])
+                        if pos_vi and pos_vi not in pos_list:
+                            pos_list.append(pos_vi)
+                        terms = entry[1][:4] if isinstance(entry[1], list) else []
+                        if terms:
+                            extra_meanings.append(f"{pos_vi}: {', '.join(terms)}")
+    except Exception as e:
+        print("Google GTX lookup warning:", e)
+
+    # 2. Free Dictionary API for IPA phonetic (if 1 or 2 words)
+    words = clean_text.split()
+    if 1 <= len(words) <= 2:
+        target_w = words[0].strip(".,!?;:\"'()").lower()
+        try:
+            d_url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{urllib.parse.quote(target_w)}"
+            req = urllib.request.Request(d_url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=2.5) as resp:
+                d_data = json.loads(resp.read().decode("utf-8"))
+                if isinstance(d_data, list) and len(d_data) > 0:
+                    entry0 = d_data[0]
+                    phonetic = entry0.get("phonetic") or ""
+                    if not phonetic:
+                        for p in entry0.get("phonetics", []):
+                            if p.get("text"):
+                                phonetic = p["text"]
+                                break
+                    if not pos_list:
+                        for m in entry0.get("meanings", []):
+                            p_en = (m.get("partOfSpeech") or "").lower()
+                            p_vi = POS_VI_MAP.get(p_en, p_en)
+                            if p_vi and p_vi not in pos_list:
+                                pos_list.append(p_vi)
+        except Exception:
+            pass
+
+    combined_meaning = primary_meaning
+    if extra_meanings:
+        combined_meaning = f"{primary_meaning} ({' | '.join(extra_meanings)})"
+
+    return {
+        "word": clean_text,
+        "phonetic": phonetic,
+        "part_of_speech": ", ".join(pos_list),
+        "primary_meaning": primary_meaning,
+        "detailed_meaning": combined_meaning,
+        "extra_meanings": extra_meanings
+    }
+
+@app.get("/api/vocabulary")
+def list_vocabulary():
+    return get_vocab_list()
+
+@app.post("/api/vocabulary")
+def add_vocabulary(req: VocabRequest):
+    try:
+        saved = save_vocab_item(req.model_dump() if hasattr(req, "model_dump") else req.dict())
+        return saved
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@app.delete("/api/vocabulary/{word_key}")
+def remove_vocabulary(word_key: str):
+    decoded_key = urllib.parse.unquote(word_key)
+    ok = delete_vocab_item(decoded_key)
+    return {"deleted": ok, "word_key": decoded_key}
+
+@app.patch("/api/vocabulary/{word_key}/master")
+def master_vocabulary(word_key: str):
+    decoded_key = urllib.parse.unquote(word_key)
+    updated = toggle_vocab_mastered(decoded_key)
+    if not updated:
+        raise HTTPException(status_code=404, detail="Không tìm thấy từ vựng")
+    return updated
+
+# ================= SMART MEDIA ROUTES =================
+
 @app.get("/media/{session_id}/audios/{filename}")
 def serve_audio(session_id: str, filename: str):
     local_path = os.path.join(DATA_DIR, session_id, "audios", filename)
     if os.path.exists(local_path) and os.path.getsize(local_path) > 100:
         return FileResponse(local_path, media_type="audio/mpeg")
     
-    # Cloud fallback: query MongoDB for remote_audio_url
     data = get_session_details(session_id)
     if data:
-        # filename is e.g. q1.mp3 -> question_number = 1
         m = filename.replace(".mp3", "").replace("q", "")
         if m.isdigit():
             q_num = int(m)
@@ -120,7 +243,6 @@ def serve_image(session_id: str, filename: str):
     if os.path.exists(local_path) and os.path.getsize(local_path) > 100:
         return FileResponse(local_path, media_type="image/webp")
     
-    # Cloud fallback
     data = get_session_details(session_id)
     if data:
         m = filename.replace(".webp", "").replace("q", "")

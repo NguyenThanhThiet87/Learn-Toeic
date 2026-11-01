@@ -18,6 +18,10 @@
       <select id="session-select" class="session-select" title="Chọn đề thi đã cào">
         <option value="">Đang nạp danh sách đề...</option>
       </select>
+      <button id="btn-open-vocab" class="btn-vocab-header" title="Mở Sổ Từ Vựng & Ôn tập Flashcard">
+        <span>📖 Sổ Từ Vựng</span>
+        <span class="vocab-badge" id="vocab-count">0</span>
+      </button>
       <button id="btn-open-crawl" class="btn-primary">
         <span>+ Cào Đề Mới</span>
       </button>
@@ -80,7 +84,7 @@
             <div class="shortcut-pill"><kbd>Ctrl+R</kbd> Nghe lại đầu</div>
             <div class="shortcut-pill"><kbd>Ctrl+H</kbd> Gợi ý 1 chữ</div>
             <div class="shortcut-pill"><kbd>Ctrl+Enter</kbd> Câu tiếp theo</div>
-            <div class="shortcut-pill" style="color: var(--accent-cyan);"><kbd>Tô đen chữ</kbd> Xem dịch Tiếng Việt</div>
+            <div class="shortcut-pill" style="color: var(--accent-cyan);"><kbd>Tô đen chữ</kbd> Dịch nghĩa & Lưu Từ Vựng</div>
           </div>
         </div>
 
@@ -98,10 +102,81 @@
     </div>
   </main>
 
-  <!-- Translation Floating Tooltip (Bôi đen dịch nghĩa) -->
-  <div id="translation-tooltip">
-    <div class="tooltip-header">Bản dịch Tiếng Việt:</div>
-    <div class="tooltip-body"></div>
+  <!-- Translation Floating Tooltip (Bôi đen dịch nghĩa & lưu từ vựng) -->
+  <div id="translation-tooltip"></div>
+
+  <!-- Modal: Sổ Từ Vựng & Ôn Tập Flashcard -->
+  <div class="modal-overlay" id="modal-vocab">
+    <div class="modal-content modal-vocab-large">
+      <div class="modal-header">
+        <div class="modal-title">📖 Sổ Từ Vựng TOEIC Của Bạn</div>
+        <button class="modal-close" id="modal-vocab-close">&times;</button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="vocab-tabs">
+        <button type="button" id="tab-btn-list" class="vocab-tab-btn active">📋 Danh Sách Từ Vựng</button>
+        <button type="button" id="tab-btn-flashcard" class="vocab-tab-btn">🎴 Lật Thẻ Flashcard</button>
+      </div>
+
+      <!-- View 1: List View -->
+      <div id="vocab-view-list" class="vocab-view-section">
+        <!-- Quick Add Form -->
+        <form id="vocab-quick-add-form" class="vocab-quick-add">
+          <input type="text" id="new-vocab-word" class="form-input" placeholder="Nhập từ tiếng Anh (VD: conference)..." required>
+          <button type="button" id="btn-auto-lookup" class="btn-ctrl" title="Tự động tra nghĩa & phiên âm">🔍 Tra nghĩa</button>
+          <input type="text" id="new-vocab-meaning" class="form-input" placeholder="Nghĩa tiếng Việt...">
+          <input type="text" id="new-vocab-context" class="form-input" placeholder="Câu ví dụ (không bắt buộc)...">
+          <button type="submit" class="btn-primary">+ Thêm Từ</button>
+        </form>
+
+        <!-- Search & Filter Bar -->
+        <div class="vocab-filter-bar">
+          <input type="text" id="vocab-search" class="form-input" style="flex: 1;" placeholder="🔎 Tìm kiếm từ vựng, nghĩa tiếng Việt hoặc câu ví dụ...">
+          <select id="vocab-filter" class="session-select">
+            <option value="all">Tất cả từ vựng</option>
+            <option value="learning">Đang học (Chưa thuộc)</option>
+            <option value="mastered">Đã thuộc ✓</option>
+          </select>
+        </div>
+
+        <!-- Items List -->
+        <div id="vocab-items-container" class="vocab-items-container"></div>
+      </div>
+
+      <!-- View 2: Flashcard View -->
+      <div id="vocab-view-flashcard" class="vocab-view-section" style="display: none;">
+        <div class="flashcard-top-bar">
+          <span id="fc-counter" class="fc-counter-badge">Thẻ 1 / 1</span>
+          <span style="font-size: 12px; color: var(--text-muted);">💡 Bấm vào thẻ để lật mặt trước / mặt sau</span>
+        </div>
+
+        <div id="flashcard-box" class="flashcard-box">
+          <div class="flashcard-front">
+            <div class="fc-header-row">
+              <button type="button" id="btn-fc-speak" class="btn-tts-mini" title="Nghe phát âm">🔊</button>
+              <span id="fc-pos" class="tooltip-pos-badge"></span>
+            </div>
+            <div id="fc-word" class="fc-main-word">Word</div>
+            <div id="fc-phonetic" class="fc-phonetic"></div>
+            <div class="fc-flip-hint">Nhấn vào thẻ để xem nghĩa Tiếng Việt ↻</div>
+          </div>
+
+          <div class="flashcard-back">
+            <div class="fc-back-label">NGHĨA TIẾNG VIỆT:</div>
+            <div id="fc-meaning" class="fc-meaning-text"></div>
+            <div id="fc-context-en" class="fc-context-en"></div>
+            <div id="fc-context-vi" class="fc-context-vi"></div>
+          </div>
+        </div>
+
+        <div class="flashcard-controls">
+          <button type="button" id="btn-fc-prev" class="btn-nav">← Thẻ Trước</button>
+          <button type="button" id="btn-fc-master" class="btn-ctrl">Đánh dấu Đã thuộc</button>
+          <button type="button" id="btn-fc-next" class="btn-nav">Thẻ Tiếp Theo →</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Modal: Cào đề mới -->
@@ -156,6 +231,7 @@
   <script src="/static/js/audio_player.js"></script>
   <script src="/static/js/translator.js"></script>
   <script src="/static/js/dictation.js"></script>
+  <script src="/static/js/vocabulary.js"></script>
   <script src="/static/js/app.js"></script>
 </body>
 </html>
